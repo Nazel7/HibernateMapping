@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="javax.activation-1.2.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Spring Libraries/resolve-hibernate-for-java9 -&amp;above-user/javax.activation-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Spring Libraries/resolve-hibernate-for-java9 -&amp;above-user/jaxb-api-2.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Spring Libraries/resolve-hibernate-for-java9 -&amp;above-user/jaxb-core-2.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Spring Libraries/resolve-hibernate-for-java9 -&amp;above-user/jaxb-impl-2.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
