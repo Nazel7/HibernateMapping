@@ -25,7 +25,7 @@
         <!-- Set the current session context -->
         <property name="current_session_context_class">thread</property>
         <!--        Mapping class for Listing-->
-        <mapping class="com.hibernate.springproject.objectClass.Course"/>
+        <mapping class="com.hibernate.springproject.entity.Course"/>
 
     </session-factory>
 

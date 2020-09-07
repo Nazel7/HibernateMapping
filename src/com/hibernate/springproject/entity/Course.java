@@ -1,4 +1,4 @@
-package com.hibernate.springproject.objectClass;
+package com.hibernate.springproject.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;

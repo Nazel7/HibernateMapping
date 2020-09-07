@@ -1,11 +1,9 @@
 package com.hibernate.springproject.hibernateclass;
 
-import com.hibernate.springproject.objectClass.*;
+import com.hibernate.springproject.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
-import java.util.List;
 
 public class InstructorFactory {
     public static void main(String[] args) {

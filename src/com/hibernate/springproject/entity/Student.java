@@ -1,15 +1,13 @@
-package com.hibernate.springproject.objectClass;
-
-
+package com.hibernate.springproject.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "instructor")
-@Access(value = AccessType.FIELD)
-public class Instructor {
+@Table(name="student")
+@Access(AccessType.FIELD)
+public class Student {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,22 +18,25 @@ public class Instructor {
     private String lastName;
     @Column(name = "email")
     private String email;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "instructor_detail_id")
-    private InstructorDetail instructorDetailID;
-    @OneToMany(mappedBy = "instructorID", cascade = {CascadeType.DETACH, CascadeType.MERGE,
-            CascadeType.PERSIST, CascadeType.REFRESH})
-    private List<Course> courseList;
 
-    public Instructor() {
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(
+            name= "course_student",
+            joinColumns=@JoinColumn(name= "student_id"),
+            inverseJoinColumns = @JoinColumn(name= "course_id")
+    )
+    private List<Course> courses;
+
+    public Student(){
         super();
     }
 
-    public Instructor(String firstName, String lastName, String email) {
+    public Student(String firstName, String lastName, String email) {
+        this.courses= new ArrayList<>();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.courseList= new ArrayList<>();
     }
 
     public int getId() {
@@ -70,32 +71,19 @@ public class Instructor {
         this.email = email;
     }
 
-    public InstructorDetail getInstructorDetailID() {
-        return instructorDetailID;
+    public List<Course> getCourses() {
+        return courses;
     }
 
-    public void setInstructorDetailID(InstructorDetail instructorDetailID) {
-        this.instructorDetailID = instructorDetailID;
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
-    public void addCourse(Course course){
-        this.courseList.add(course);
-        if(this.courseList != null){
-            course.setInstructorID(this);
-        }
+    public void addCourseToStudent(Course course){
+        this.courses.add(course);
     }
-
-    public List<Course> getCourseList() {
-        return courseList;
-    }
-
-    public void setCourseList(List<Course> courseList) {
-        this.courseList = courseList;
-    }
-
     @Override
     public String toString() {
         return "Instructor: " + this.firstName + " " + this.lastName + "\n" +
                 this.email;
     }
-
 }
